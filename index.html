@@ -2,11 +2,105 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  
+  <!-- Primary Meta Tags -->
   <title>MARKTIX – Marketing Digital, Diseño Web y Producción Audiovisual</title>
+  <meta name="title" content="MARKTIX – Marketing Digital, Diseño Web y Producción Audiovisual">
   <meta name="description" content="Capacitamos a empresas para que dominen el panorama digital, fusionando estrategia de marketing, desarrollo web de vanguardia y producción audiovisual de alto impacto." />
+  <meta name="keywords" content="marketing digital, diseño web, producción audiovisual, desarrollo web, estrategia digital, redes sociales, e-commerce, branding, Chile">
+  <meta name="author" content="MARKTIX">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://marktix.cl">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://marktix.cl">
+  <meta property="og:title" content="MARKTIX – Marketing Digital, Diseño Web y Producción Audiovisual">
+  <meta property="og:description" content="Socio estratégico para la transformación digital de tu empresa. Fusionamos estrategia, desarrollo de vanguardia y producción audiovisual de alto impacto.">
+  <meta property="og:image" content="https://marktix.cl/images/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="MARKTIX - Transformación Digital para Empresas">
+  <meta property="og:site_name" content="MARKTIX">
+  <meta property="og:locale" content="es_CL">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://marktix.cl">
+  <meta property="twitter:title" content="MARKTIX – Marketing Digital, Diseño Web y Producción Audiovisual">
+  <meta property="twitter:description" content="Socio estratégico para la transformación digital de tu empresa. Fusionamos estrategia, desarrollo de vanguardia y producción audiovisual.">
+  <meta property="twitter:image" content="https://marktix.cl/images/twitter-card.jpg">
+  <meta property="twitter:image:alt" content="MARKTIX - Transformación Digital para Empresas">
+  <meta name="twitter:creator" content="@marktix_cl">
+  <meta name="twitter:site" content="@marktix_cl">
+  
+  <!-- WhatsApp / Telegram specific -->
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:updated_time" content="2025-09-04T12:00:00Z">
+  
+  <!-- Additional SEO -->
+  <meta name="theme-color" content="#ff7a18">
+  <meta name="msapplication-navbutton-color" content="#ff7a18">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="application-name" content="MARKTIX">
+  <meta name="apple-mobile-web-app-title" content="MARKTIX">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  
+  <!-- Schema.org structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "MARKTIX",
+    "description": "Capacitamos a empresas para que dominen el panorama digital, fusionando estrategia de marketing, desarrollo web de vanguardia y producción audiovisual de alto impacto.",
+    "url": "https://marktix.cl",
+    "logo": "https://marktix.cl/images/logo.png",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+56973507800",
+      "contactType": "customer service",
+      "areaServed": "CL",
+      "availableLanguage": "Spanish"
+    },
+    "sameAs": [
+      "https://www.instagram.com/marktix_cl",
+      "https://www.youtube.com/@marktix",
+      "https://www.tiktok.com/@marktix.marketing"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "CL"
+    },
+    "service": [
+      {
+        "@type": "Service",
+        "name": "Marketing Digital",
+        "description": "Estrategias de marketing digital integrales para atraer, convertir y fidelizar"
+      },
+      {
+        "@type": "Service", 
+        "name": "Diseño Web",
+        "description": "Experiencias web de vanguardia optimizadas para usabilidad y conversión"
+      },
+      {
+        "@type": "Service",
+        "name": "Producción Audiovisual", 
+        "description": "Contenido audiovisual de alto impacto para elevar la percepción de marca"
+      }
+    ]
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <style>
     :root{
       --bg:#0f0f11;
@@ -23,33 +117,108 @@
     a{color:inherit;text-decoration:none}
     img{max-width:100%;height:auto}
     .container{max-width:1200px;margin-inline:auto;padding:0 1.2rem}
-    .btn{display:inline-flex;align-items:center;gap:.6rem;padding:.9rem 1.2rem;border-radius:14px;border:1px solid transparent;font-weight:600}
+    .btn{display:inline-flex;align-items:center;gap:.6rem;padding:.9rem 1.2rem;border-radius:14px;border:1px solid transparent;font-weight:600;transition:all 0.3s ease;position:relative;overflow:hidden}
+    .btn::before{content:'';position:absolute;top:50%;left:50%;width:0;height:0;background:rgba(255,255,255,.1);border-radius:50%;transition:all 0.6s ease;transform:translate(-50%, -50%)}
+    .btn:hover::before{width:300px;height:300px}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,.3)}
     .btn--primary{background:var(--grad);color:#1a1a1a}
+    .btn--primary:hover{box-shadow:0 8px 25px rgba(255,122,24,.4)}
     .btn--ghost{border-color:var(--border);background:#111114;color:var(--text)}
+    .btn--ghost:hover{border-color:var(--brand);background:#161619}
     .chip{display:inline-flex;align-items:center;gap:.5rem;padding:.35rem .7rem;border:1px solid var(--border);border-radius:999px;background:rgba(255,255,255,.04);color:var(--muted);font-size:.85rem}
     .chip b{color:#ffd29c}
-    header.site{position:sticky;top:0;z-index:50;background:rgba(15,15,17,.7);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.06)}
-    .nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 0}
-    .nav__brand{display:flex;align-items:center;gap:.8rem;font-weight:800;letter-spacing:.2px}
-    .brand__logo{width:36px;height:36px;border-radius:10px;background:var(--grad);box-shadow:0 0 0 6px rgba(255,122,24,.08)}
+    header.site{position:sticky;top:0;z-index:50;background:rgba(15,15,17,.7);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.06);transition:all 0.3s ease}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 0;transition:padding 0.3s ease}
+    .nav__brand{display:flex;align-items:center;gap:.8rem;font-weight:800;letter-spacing:.2px;transition:transform 0.2s ease}
+    .nav__brand:hover{transform:scale(1.05)}
+    .brand__logo{width:36px;height:36px;border-radius:10px;background:var(--grad);box-shadow:0 0 0 6px rgba(255,122,24,.08);transition:box-shadow 0.3s ease, transform 0.2s ease}
+    .nav__brand:hover .brand__logo{box-shadow:0 0 0 8px rgba(255,122,24,.12);transform:rotate(5deg)}
     .nav__links{display:flex;gap:1rem}
-    .nav__links a{padding:.6rem .9rem;border-radius:10px;color:var(--muted)}
-    .nav__links a:hover{background:#1a1b20;color:var(--text)}
+    .nav__links a{padding:.6rem .9rem;border-radius:10px;color:var(--muted);transition:all 0.3s ease;position:relative;overflow:hidden}
+    .nav__links a::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg, transparent, rgba(255,122,24,.1), transparent);transition:left 0.5s ease;z-index:-1}
+    .nav__links a:hover::before{left:100%}
+    .nav__links a:hover{background:#1a1b20;color:var(--text);transform:translateY(-2px)}
     .nav__cta{display:flex;gap:.7rem}
     /* mobile menu */
-    .menu-btn{display:none}
+    .menu-btn{display:none;transition:all 0.3s ease}
+    .menu-btn:hover{background:#1a1b20;transform:scale(1.05)}
+    [x-cloak] { display: none !important; }
     @media (max-width: 920px){
       .nav__links,.nav__cta{display:none}
       .menu-btn{display:inline-flex}
-      .mobile{display:none;position:absolute;inset:60px 0 auto 0;background:#101014;border-bottom:1px solid var(--border);padding:1rem 0}
-      .mobile a{display:block;padding:.9rem 1.2rem;color:var(--muted)}
-      .mobile a:hover{background:#17171c;color:var(--text)}
+      .mobile{position:absolute;inset:60px 0 auto 0;background:#101014;border-bottom:1px solid var(--border);padding:1rem 0;box-shadow:0 4px 6px -1px rgba(0, 0, 0, 0.1)}
+      .mobile a{display:block;padding:.9rem 1.2rem;color:var(--muted);transition:all 0.3s ease;border-left:3px solid transparent}
+      .mobile a:hover{background:#17171c;color:var(--text);border-left-color:var(--brand);transform:translateX(5px)}
+    }
+    
+    /* Responsive improvements */
+    @media (max-width: 1024px) {
+      .container{padding:0 1rem}
+      .grid-3{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+      .grid-2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+    }
+    
+    @media (max-width: 768px) {
+      .container{padding:0 .8rem}
+      .hero{padding:3rem 0 2.5rem}
+      h1{font-size:clamp(1.8rem, 8vw, 2.8rem)}
+      .h2{font-size:clamp(1.2rem, 6vw, 1.8rem)}
+      .hero__actions{flex-direction:column;align-items:stretch}
+      .hero__actions .btn{justify-content:center}
+      .grid-3{grid-template-columns:1fr;gap:1rem}
+      .grid-2{grid-template-columns:1fr;gap:1rem}
+      .logos{grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:.8rem}
+      .partner-card{height:100px}
+      .service-image{height:150px}
+    }
+    
+    @media (max-width: 480px) {
+      .container{padding:0 .6rem}
+      .hero{padding:2.5rem 0 2rem}
+      .nav{padding:.7rem 0}
+      .brand__logo{width:30px;height:30px}
+      .btn{padding:.7rem 1rem;font-size:.9rem}
+      .chip{padding:.25rem .5rem;font-size:.8rem}
+      section{padding:2.5rem 0}
+      .section__head{margin-bottom:1.5rem;gap:.3rem}
+      .card{padding:1rem}
+      .service{padding:1rem}
+      .service-image{height:120px}
+      .hero-card{padding:1rem}
+      .kpi{padding:.6rem .8rem}
+      .kpi strong{font-size:1.2rem}
+      .logos{grid-template-columns:repeat(auto-fit,minmax(100px,1fr))}
+      .partner-card{height:80px}
+      .partner-card-front, .partner-card-back{font-size:.8rem;padding:.3rem}
+      .logo{height:45px;font-size:.8rem}
+      form{gap:.6rem}
+      input,textarea{padding:.7rem}
+    }
+    
+    @media (max-width: 360px) {
+      .container{padding:0 .5rem}
+      h1{font-size:1.6rem}
+      .h2{font-size:1.1rem}
+      .hero{padding:2rem 0 1.5rem}
+      .nav__brand{gap:.5rem;font-size:.9rem}
+      .brand__logo{width:28px;height:28px}
+      .chip{font-size:.75rem}
+      section{padding:2rem 0}
+      .service-image{height:100px}
+      .partner-card{height:70px}
+      .partner-card-front, .partner-card-back{font-size:.75rem}
+      .logos{grid-template-columns:repeat(2,1fr)}
+      .hero-card .row{flex-direction:column;gap:.5rem}
+      .kpi{grid-template-columns:1fr;text-align:center}
     }
     /* hero */
     .hero{position:relative;padding:4.2rem 0 3.2rem;border-bottom:1px solid var(--border);overflow:hidden}
     .hero::before{content:"";position:absolute;inset:-20% -20% auto auto;width:60vw;height:60vw;min-height:420px;filter:blur(90px);background:radial-gradient(60% 60% at 50% 50%,rgba(255,122,24,.25),rgba(255,183,3,.12) 60%, transparent 70%);pointer-events:none}
     .hero .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:2rem;align-items:center}
-    @media (max-width: 920px){.hero .grid{grid-template-columns:1fr}}
+    @media (max-width: 920px){
+      .hero .grid{grid-template-columns:1fr;text-align:center}
+      .hero::before{width:80vw;height:80vw;inset:-30% -40% auto auto}
+    }
     .eyebrow{margin-bottom:1rem}
     h1{font-size:clamp(2.2rem, 5vw, 3.6rem);line-height:1.05;margin:0 0 1rem}
     .h2{font-size:clamp(1.4rem, 2.8vw, 2.1rem);line-height:1.15;margin:0 0 .6rem}
@@ -64,8 +233,14 @@
     /* sections */
     section{padding:3.4rem 0;border-bottom:1px solid var(--border)}
     .section__head{display:flex;flex-direction: column; align-items: flex-start; text-align: left; gap:.5rem;margin-bottom:2rem}
-    @media (min-width: 768px) { .section__head{flex-direction: row; align-items: end; justify-content: space-between; text-align: left;} }
+    @media (min-width: 768px) { 
+      .section__head{flex-direction: row; align-items: end; justify-content: space-between; text-align: left;} 
+    }
     .section__head p{color:#d0d3d9;max-width:54ch}
+    @media (max-width: 768px) {
+      .section__head p{max-width:none}
+      .section__head{text-align:left}
+    }
     .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.2rem}
     .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.2rem}
     .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.2rem}
@@ -81,7 +256,8 @@
     .service-image{width:100%;height:180px;object-fit:cover;border-radius:12px;margin-bottom:1rem;border:1px solid var(--border)}
     /* clientes y socios */
     .logos{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;align-items:center}
-    .logo{height:52px;border:1px solid var(--border);border-radius:12px;display:grid;place-items:center;background:#121216;font-weight:600;color:#e0e0e0;letter-spacing:.5px; font-size: 0.9rem; text-align: center; padding: 0.5rem;}
+    .logo{height:60px;border:1px solid var(--border);border-radius:12px;display:grid;place-items:center;background:#121216;font-weight:600;color:#e0e0e0;letter-spacing:.5px; font-size: 0.9rem; text-align: center; padding: 1rem 0.8rem;transition:all 0.3s ease}
+    .logo:hover{background:#1a1a20;border-color:rgba(255,122,24,.3);transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.2)}
     
     /* Flip card animation for tech partners */
     .partner-card {
@@ -131,24 +307,53 @@
       object-fit: contain;
       filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
     }
+    
+    /* Mobile touch support for flip cards */
+    @media (hover: none) and (pointer: coarse) {
+      .partner-card:active .partner-card-inner,
+      .partner-card:focus-within .partner-card-inner {
+        transform: rotateY(180deg);
+      }
+    }
     /* faq */
     .faq details{border:1px solid var(--border);border-radius:14px;background:var(--card);padding:1rem}
     .faq details+details{margin-top:.9rem}
     .faq summary{cursor:pointer;font-weight:600}
     /* contacto */
-    form{display:grid;gap:.8rem}
-    input,textarea{width:100%;background:#101114;border:1px solid var(--border);border-radius:12px;padding:.9rem;color:var(--text)}
-    input:focus,textarea:focus{outline:2px solid rgba(255,183,3,.35)}
+    form{display:grid;gap:1.2rem}
+    .form-group{display:grid;gap:.5rem}
+    input,textarea{width:100%;background:#101114;border:1px solid var(--border);border-radius:12px;padding:1rem;color:var(--text);transition:all 0.3s ease;font-family:inherit}
+    input:focus,textarea:focus{outline:2px solid rgba(255,183,3,.35);border-color:var(--brand);background:#0f1013;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.2)}
+    label{color:var(--muted);font-weight:500;margin-bottom:.3rem;transition:color 0.3s ease}
+    input:focus + label, textarea:focus + label, input:focus ~ label, textarea:focus ~ label{color:var(--brand)}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    @media (max-width: 768px){
+      .form-row{grid-template-columns:1fr;gap:.8rem}
+      form{gap:1rem}
+    }
     .grid-contact{display:grid;grid-template-columns:1.2fr .8fr;gap:1.2rem}
-    @media (max-width: 920px){.grid-contact{grid-template-columns:1fr}}
+    @media (max-width: 920px){
+      .grid-contact{grid-template-columns:1fr}
+    }
+    @media (max-width: 768px){
+      .grid-contact{gap:1rem}
+    }
     footer{padding:1.6rem 0}
     .foot{display:flex;flex-wrap:wrap;align-items:center;gap:1rem;color:var(--muted);font-size:.95rem}
+    @media (max-width: 768px){
+      .foot{flex-direction:column;text-align:center;gap:.5rem}
+      .foot > div:first-child{order:2}
+      .social-links{order:1}
+    }
     .foot a{color:#ffd29c}
     .social-links{display:flex;gap:.9rem;flex-wrap:wrap}
+    @media (max-width: 480px){
+      .social-links{justify-content:center}
+    }
   </style>
 </head>
 <body>
-  <header class="site">
+  <header class="site" x-data="{ mobileMenuOpen: false }">
     <div class="container nav">
       <a href="#inicio" class="nav__brand" aria-label="Ir al inicio">
         <span class="brand__logo" aria-hidden="true"></span>
@@ -165,7 +370,34 @@
         <a class="btn btn--ghost" href="#contacto">Agendar Consulta</a>
         <a class="btn btn--primary" href="#contacto">Contáctanos</a>
       </div>
-      <button class="menu-btn btn btn--ghost" aria-controls="menu" aria-expanded="false">Menú</button>
+      <button 
+        class="menu-btn btn btn--ghost" 
+        @click="mobileMenuOpen = !mobileMenuOpen"
+        :aria-expanded="mobileMenuOpen"
+        aria-controls="menu"
+      >
+        Menú
+      </button>
+      <!-- Mobile Menu -->
+      <div 
+        id="menu" 
+        class="mobile"
+        x-show="mobileMenuOpen"
+        x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0 -translate-y-2"
+        x-transition:enter-end="opacity-100 translate-y-0"
+        x-transition:leave="transition ease-in duration-200"
+        x-transition:leave-start="opacity-100 translate-y-0"
+        x-transition:leave-end="opacity-0 -translate-y-2"
+        style="display: none;"
+        x-cloak
+      >
+        <a href="#inicio" @click="mobileMenuOpen = false">Inicio</a>
+        <a href="#nosotros" @click="mobileMenuOpen = false">Nosotros</a>
+        <a href="#servicios" @click="mobileMenuOpen = false">Servicios</a>
+        <a href="#clientes" @click="mobileMenuOpen = false">Clientes</a>
+        <a href="#contacto" @click="mobileMenuOpen = false">Contacto</a>
+      </div>
     </div>
   </header>
 
@@ -340,21 +572,21 @@
 
       <div class="grid-contact">
         <form onsubmit="event.preventDefault(); alert('¡Gracias! Nos pondremos en contacto pronto.'); this.reset();">
-          <div class="grid-2">
-            <div>
-              <label for="nombre" class="muted">Nombre</label>
-              <input id="nombre" name="nombre" placeholder="Tu nombre" required />
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nombre">Nombre *</label>
+              <input id="nombre" name="nombre" placeholder="Tu nombre completo" required />
             </div>
-            <div>
-              <label for="email" class="muted">Email</label>
+            <div class="form-group">
+              <label for="email">Email *</label>
               <input id="email" name="email" type="email" placeholder="tu@email.com" required />
             </div>
           </div>
-          <div>
-            <label for="mensaje" class="muted">Mensaje</label>
-            <textarea id="mensaje" name="mensaje" rows="4" placeholder="Cuéntanos sobre tu proyecto y tus metas"></textarea>
+          <div class="form-group">
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" name="mensaje" rows="5" placeholder="Cuéntanos sobre tu proyecto y tus metas. ¿En qué podemos ayudarte?"></textarea>
           </div>
-          <button class="btn btn--primary" type="submit">Enviar Mensaje</button>
+          <button class="btn btn--primary" type="submit">✉️ Enviar Mensaje</button>
         </form>
 
         <div class="card">
@@ -394,22 +626,59 @@
   </footer>
 
   <script>
-    // Mobile menu toggle
-    const btn=document.querySelector('.menu-btn');
-    const menu=document.getElementById('menu');
-    btn?.addEventListener('click',()=>{
-      const open=menu.style.display==='block';
-      menu.style.display=open?'none':'block';
-      btn.setAttribute('aria-expanded', String(!open));
-    });
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click',e=>{
-        const id=a.getAttribute('href');
+    // Smooth scroll with enhanced easing
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href');
         if (!id || id === '#') return;
-        const el=document.querySelector(id);
-        if(el){ e.preventDefault(); window.scrollTo({top:el.offsetTop-70,behavior:'smooth'}); if(menu && menu.style.display === 'block') { menu.style.display='none'; btn.setAttribute('aria-expanded', 'false'); } }
+        
+        const el = document.querySelector(id);
+        if (el) {
+          e.preventDefault();
+          
+          // Enhanced smooth scroll
+          const targetPosition = el.offsetTop - 70;
+          const startPosition = window.pageYOffset;
+          const distance = targetPosition - startPosition;
+          const duration = 800;
+          let start = null;
+
+          function animation(currentTime) {
+            if (start === null) start = currentTime;
+            const timeElapsed = currentTime - start;
+            const run = easeInOutCubic(timeElapsed, startPosition, distance, duration);
+            window.scrollTo(0, run);
+            if (timeElapsed < duration) requestAnimationFrame(animation);
+          }
+
+          // Easing function for smoother animation
+          function easeInOutCubic(t, b, c, d) {
+            t /= d / 2;
+            if (t < 1) return c / 2 * t * t * t + b;
+            t -= 2;
+            return c / 2 * (t * t * t + 2) + b;
+          }
+
+          requestAnimationFrame(animation);
+        }
       });
+    });
+
+    // Add scroll effect to navbar
+    let lastScrollY = window.scrollY;
+    window.addEventListener('scroll', () => {
+      const currentScrollY = window.scrollY;
+      const header = document.querySelector('header.site');
+      
+      if (currentScrollY > 100) {
+        header.style.background = 'rgba(15,15,17,.95)';
+        header.style.backdropFilter = 'blur(20px)';
+      } else {
+        header.style.background = 'rgba(15,15,17,.7)';
+        header.style.backdropFilter = 'blur(12px)';
+      }
+      
+      lastScrollY = currentScrollY;
     });
   </script>
 </body>
