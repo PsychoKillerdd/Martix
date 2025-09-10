@@ -317,7 +317,7 @@
 
     .hero-kpis{
       display:grid;
-      grid-template-columns:1fr;
+      grid-template-columns:1fr 1fr;
       gap:1rem
     }
 
@@ -538,66 +538,164 @@
     .service .title{display:flex;align-items:center;gap:.6rem;margin:0 0 .4rem;font-weight:700}
     .service-image{width:100%;height:180px;object-fit:cover;border-radius:12px;margin-bottom:1rem;border:1px solid var(--border)}
     /* clientes y socios */
-    .logos{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;align-items:center}
+    .logos{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;align-items:center;max-width:600px;margin:0 auto}
     .logo{height:60px;border:1px solid var(--border);border-radius:12px;display:grid;place-items:center;background:#121216;font-weight:600;color:#e0e0e0;letter-spacing:.5px; font-size: 0.9rem; text-align: center; padding: 1rem 0.8rem;transition:all 0.3s ease}
     .logo:hover{background:#1a1a20;border-color:rgba(255,122,24,.3);transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.2)}
     
-    /* Flip card animation for tech partners */
-    .partner-card {
-      height: 120px;
-      perspective: 1000px;
-    }
-    .partner-card-inner {
-      width: 100%;
-      height: 100%;
+    /* Infinite carousel for clients */
+    .clients-carousel {
+      overflow: hidden;
       position: relative;
-      transform-style: preserve-3d;
-      transition: transform 0.6s;
+      background: linear-gradient(90deg, var(--bg) 0%, transparent 10%, transparent 90%, var(--bg) 100%);
+      mask: linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%);
+      -webkit-mask: linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%);
     }
-    .partner-card:hover .partner-card-inner {
-      transform: rotateY(180deg);
+    
+    .clients-track {
+      display: flex;
+      animation: scroll-left 30s linear infinite;
+      width: max-content;
     }
-    .partner-card-front,
-    .partner-card-back {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      backface-visibility: hidden;
+    
+
+    
+    .client-item {
+      flex-shrink: 0;
+      width: 220px;
+      height: 100px;
+      margin: 0 1.2rem;
+      background: var(--card);
+      border: 1px solid var(--border);
       border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-    }
-    .partner-card-front {
-      background: linear-gradient(135deg, var(--card) 0%, #1a1a1f 100%);
-      border: 1px solid var(--border);
-      color: var(--text);
-      font-weight: 600;
-      font-size: 0.9rem;
-      text-align: center;
-      padding: 0.5rem;
-      transform: rotateY(0deg);
-    }
-    .partner-card-back {
-      background: linear-gradient(135deg, var(--brand) 0%, var(--brand-2) 100%);
-      border: 1px solid var(--brand);
-      transform: rotateY(180deg);
-      padding: 1rem;
-    }
-    .partner-card-back img {
-      max-width: 80%;
-      max-height: 80%;
-      object-fit: contain;
-      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
     }
     
-    /* Mobile touch support for flip cards */
-    @media (hover: none) and (pointer: coarse) {
-      .partner-card:active .partner-card-inner,
-      .partner-card:focus-within .partner-card-inner {
-        transform: rotateY(180deg);
+
+    
+
+    
+    .client-item img {
+      max-width: 140%;
+      max-height: 140%;
+      object-fit: contain;
+      transform: scale(1.2);
+    }    .client-item .client-text {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+      text-align: center;
+      line-height: 1.3;
+    }
+    
+    @keyframes scroll-left {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    
+    /* Responsive adjustments for carousel */
+    @media (max-width: 768px) {
+      .client-item {
+        width: 180px;
+        height: 85px;
+        margin: 0 0.8rem;
+        padding: 1rem;
+      }
+      
+      .clients-track {
+        animation-duration: 25s;
+      }
+      
+      .client-item .client-text {
+        font-size: 0.8rem;
       }
     }
+    
+    @media (max-width: 480px) {
+      .client-item {
+        width: 150px;
+        height: 75px;
+        padding: 0.8rem;
+      }
+      
+      .clients-track {
+        animation-duration: 20s;
+      }
+    }
+    
+    /* Simple hover effect for tech partners - logos only */
+    .partner-card {
+      height: 120px;
+      margin: 0.5rem;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      background: linear-gradient(135deg, #1a1a1f 0%, #2a2a2f 100%);
+      border: 1px solid rgba(255,122,24,.2);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .partner-card:hover {
+      background: linear-gradient(135deg, var(--brand) 0%, var(--brand-2) 100%);
+      border: 1px solid var(--brand);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255,122,24,0.2);
+    }
+    
+    .partner-card img {
+      max-width: 85%;
+      max-height: 85%;
+      object-fit: contain;
+      opacity: 0.8;
+      transition: all 0.3s ease;
+    }
+    
+    .partner-card:hover img {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+
+    /* Estilos adicionales para el formulario */
+    .btn-loading {
+      opacity: 0.8;
+    }
+    
+    .btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .form-group input[type="tel"],
+    .form-group input[name="empresa"] {
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--text);
+      padding: 0.75rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+    
+    .form-group input[type="tel"]:focus,
+    .form-group input[name="empresa"]:focus {
+      border-color: var(--brand);
+      box-shadow: 0 0 0 2px rgba(255, 122, 24, 0.1);
+      outline: none;
+    }
+
     /* faq */
     .faq details{border:1px solid var(--border);border-radius:14px;background:var(--card);padding:1rem}
     .faq details+details{margin-top:.9rem}
@@ -704,15 +802,11 @@
           <p class="kpi-title">Indicadores clave</p>
           <div class="hero-kpis">
             <div class="kpi">
-              <strong>+120</strong>
+              <strong>+6</strong>
               <small>Proyectos ejecutados</small>
             </div>
             <div class="kpi">
-              <strong>3.4x</strong>
-              <small>ROAS promedio</small>
-            </div>
-            <div class="kpi">
-              <strong>12</strong>
+              <strong>3</strong>
               <small>Industrias impactadas</small>
             </div>
           </div>
@@ -753,44 +847,13 @@
         </div>
         <div class="logos" aria-label="Logos de socios tecnológicos">
             <div class="partner-card">
-              <div class="partner-card-inner">
-                <div class="partner-card-front">
-                  <span>Adobe Pro</span>
-                </div>
-                <div class="partner-card-back">
-                  <img src="images/Adobe_Acrobat_DC_logo_2020.svg.png" alt="Adobe Pro Logo" />
-                </div>
-              </div>
+              <img src="images/Adobe_Acrobat_DC_logo_2020.svg.png" alt="Adobe Pro Logo" />
             </div>
             <div class="partner-card">
-              <div class="partner-card-inner">
-                <div class="partner-card-front">
-                  <span>Capcut Pro</span>
-                </div>
-                <div class="partner-card-back">
-                  <img src="images/capcut.webp" alt="Capcut Pro Logo" />
-                </div>
-              </div>
+              <img src="images/capcut.webp" alt="Capcut Pro Logo" />
             </div>
             <div class="partner-card">
-              <div class="partner-card-inner">
-                <div class="partner-card-front">
-                  <span>Filmora Chainer Pro</span>
-                </div>
-                <div class="partner-card-back">
-                  <img src="images/filmora.avif" alt="Filmora Pro Logo" />
-                </div>
-              </div>
-            </div>
-            <div class="partner-card">
-              <div class="partner-card-inner">
-                <div class="partner-card-front">
-                  <span>SolarPunk SpA</span>
-                </div>
-                <div class="partner-card-back">
-                  <img src="images/filmoralogo.webp" alt="SolarPunk SpA Logo" />
-                </div>
-              </div>
+              <img src="images/filmora.avif" alt="Filmora Pro Logo" />
             </div>
         </div>
     </div>
@@ -836,13 +899,66 @@
         <p>Hemos tenido el privilegio de colaborar con empresas e instituciones de diversos rubros, ayudándoles a alcanzar sus objetivos digitales.</p>
       </div>
 
-      <div class="logos" aria-label="Logos de clientes">
-        <div class="logo">Ilustre Municipalidad Quillón </div>
-        <div class="logo">Municipalidad de Florida </div>
-        <div class="logo">Cabañas La Piedra del Ángulo </div>
-        <div class="logo">Neumáticos y Repuestos </div>
-        <div class="logo">Coopvisión </div>
-        <div class="logo">Gym Strength Power Mininco </div>
+      <div class="clients-carousel">
+        <div class="clients-track">
+          <!-- First set -->
+          <div class="client-item">
+            <img src="images/muniquillon.jpg" alt="Municipalidad de Quillón">
+          </div>
+          <div class="client-item">
+            <img src="images/muniflorida.png" alt="Municipalidad de Florida">
+          </div>
+          <div class="client-item">
+            <div class="client-text">Cabañas La Piedra del Ángulo</div>
+          </div>
+          <div class="client-item">
+            <img src="images/neumaticosservitrans.jpeg" alt="Neumáticos y Repuestos">
+          </div>
+          <div class="client-item">
+            <img src="images/coopvision.jpeg" alt="Coopvisión">
+          </div>
+          <div class="client-item">
+            <img src="images/gymtrengthpowerminico.png" alt="Gym Strength Power Mininco">
+          </div>
+          <div class="client-item">
+            <img src="images/alvaroconsultacontables.png" alt="Álvaro Consulta Contables">
+          </div>
+          <div class="client-item">
+            <img src="images/PANADERIA.png" alt="Panadería">
+          </div>
+          <div class="client-item">
+            <img src="images/solarpunk.png" alt="SolarPunk">
+          </div>
+          
+          <!-- Duplicate set for infinite loop -->
+          <div class="client-item">
+            <img src="images/muniquillon.jpg" alt="Municipalidad de Quillón">
+          </div>
+          <div class="client-item">
+            <img src="images/muniflorida.png" alt="Municipalidad de Florida">
+          </div>
+          <div class="client-item">
+            <div class="client-text">Cabañas La Piedra del Ángulo</div>
+          </div>
+          <div class="client-item">
+            <img src="images/neumaticosservitrans.jpeg" alt="Neumáticos y Repuestos">
+          </div>
+          <div class="client-item">
+            <img src="images/coopvision.jpeg" alt="Coopvisión">
+          </div>
+          <div class="client-item">
+            <img src="images/gymtrengthpowerminico.png" alt="Gym Strength Power Mininco">
+          </div>
+          <div class="client-item">
+            <img src="images/alvaroconsultacontables.png" alt="Álvaro Consulta Contables">
+          </div>
+          <div class="client-item">
+            <img src="images/PANADERIA.png" alt="Panadería">
+          </div>
+          <div class="client-item">
+            <img src="images/solarpunk.png" alt="SolarPunk">
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -858,7 +974,12 @@
       </div>
 
       <div class="grid-contact">
-        <form onsubmit="event.preventDefault(); alert('¡Gracias! Nos pondremos en contacto pronto.'); this.reset();">
+        <form action="https://formspree.io/f/xdkoanvb" method="POST" id="contactForm">
+          <input type="hidden" name="_to" value="contacto@marktix.cl">
+          <input type="hidden" name="_subject" value="Nuevo contacto desde MARKTIX">
+          <input type="hidden" name="_next" value="https://marktix.cl#gracias">
+          <input type="hidden" name="_cc" value="contacto@marktix.cl">
+          
           <div class="form-row">
             <div class="form-group">
               <label for="nombre">Nombre *</label>
@@ -866,14 +987,25 @@
             </div>
             <div class="form-group">
               <label for="email">Email *</label>
-              <input id="email" name="email" type="email" placeholder="tu@email.com" required />
+              <input id="email" name="_replyto" type="email" placeholder="tu@email.com" required />
             </div>
           </div>
           <div class="form-group">
-            <label for="mensaje">Mensaje</label>
-            <textarea id="mensaje" name="mensaje" rows="5" placeholder="Cuéntanos sobre tu proyecto y tus metas. ¿En qué podemos ayudarte?"></textarea>
+            <label for="telefono">Teléfono (opcional)</label>
+            <input id="telefono" name="telefono" type="tel" placeholder="+56 9 1234 5678" />
           </div>
-          <button class="btn btn--primary" type="submit">✉️ Enviar Mensaje</button>
+          <div class="form-group">
+            <label for="empresa">Empresa (opcional)</label>
+            <input id="empresa" name="empresa" placeholder="Nombre de tu empresa" />
+          </div>
+          <div class="form-group">
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" name="mensaje" rows="5" placeholder="Cuéntanos sobre tu proyecto y tus metas. ¿En qué podemos ayudarte?" required></textarea>
+          </div>
+          <button class="btn btn--primary" type="submit" id="submitBtn">
+            <span class="btn-text">✉️ Enviar Mensaje</span>
+            <span class="btn-loading" style="display: none;">⏳ Enviando...</span>
+          </button>
         </form>
 
         <div class="card">
@@ -970,6 +1102,80 @@
       
       lastScrollY = currentScrollY;
     });
+
+    // Manejo del formulario de contacto
+    const contactForm = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const btnText = document.querySelector('.btn-text');
+    const btnLoading = document.querySelector('.btn-loading');
+
+    if (contactForm) {
+      contactForm.addEventListener('submit', function(e) {
+        // Mostrar estado de carga
+        btnText.style.display = 'none';
+        btnLoading.style.display = 'inline';
+        submitBtn.disabled = true;
+
+        // Formspree se encarga del envío, solo manejamos la UX
+        setTimeout(() => {
+          // Mostrar mensaje de éxito
+          const successMessage = document.createElement('div');
+          successMessage.innerHTML = `
+            <div style="background: linear-gradient(135deg, #22c55e, #16a34a); 
+                        color: white; padding: 1rem; border-radius: 8px; 
+                        margin-top: 1rem; text-align: center;">
+              ✅ <strong>¡Mensaje enviado exitosamente!</strong><br>
+              Nos pondremos en contacto contigo pronto a <strong>contacto@marktix.cl</strong>
+            </div>
+          `;
+          
+          contactForm.parentNode.insertBefore(successMessage, contactForm.nextSibling);
+          
+          // Resetear formulario después de un momento
+          setTimeout(() => {
+            contactForm.reset();
+            btnText.style.display = 'inline';
+            btnLoading.style.display = 'none';
+            submitBtn.disabled = false;
+            successMessage.remove();
+          }, 5000);
+        }, 1000);
+      });
+    }
+
+    // Verificar si viene de un envío exitoso
+    if (window.location.hash === '#gracias') {
+      setTimeout(() => {
+        const contactSection = document.getElementById('contacto');
+        if (contactSection) {
+          contactSection.scrollIntoView({ behavior: 'smooth' });
+          
+          // Mostrar mensaje de agradecimiento
+          const thanksMessage = document.createElement('div');
+          thanksMessage.innerHTML = `
+            <div style="background: linear-gradient(135deg, #22c55e, #16a34a); 
+                        color: white; padding: 1.5rem; border-radius: 12px; 
+                        margin: 2rem 0; text-align: center; animation: fadeIn 0.5s ease;">
+              🎉 <strong>¡Gracias por contactarnos!</strong><br>
+              Hemos recibido tu mensaje y te responderemos pronto a <strong>contacto@marktix.cl</strong>
+            </div>
+          `;
+          
+          const contactContainer = contactSection.querySelector('.container');
+          if (contactContainer) {
+            contactContainer.insertBefore(thanksMessage, contactContainer.firstChild);
+            
+            // Remover mensaje después de 8 segundos
+            setTimeout(() => {
+              thanksMessage.remove();
+            }, 8000);
+          }
+        }
+        
+        // Limpiar el hash
+        history.replaceState(null, null, window.location.pathname);
+      }, 500);
+    }
   </script>
 </body>
 </html>
