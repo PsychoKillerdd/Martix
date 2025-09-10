@@ -657,6 +657,11 @@
     }
     /* sections */
     section{padding:3.4rem 0;border-bottom:1px solid var(--border)}
+    
+    /* Larger clients section */
+    #clientes {
+      padding: 5rem 0;
+    }
     .section__head{display:flex;flex-direction: column; align-items: flex-start; text-align: left; gap:.5rem;margin-bottom:2rem}
     @media (min-width: 768px) { 
       .section__head{flex-direction: row; align-items: end; justify-content: space-between; text-align: left;} 
@@ -703,19 +708,39 @@
     
     .client-item {
       flex-shrink: 0;
-      width: 220px;
-      height: 100px;
-      margin: 0 1.2rem;
+      width: 250px;
+      height: 120px;
+      margin: 0 1.5rem;
       background: var(--card);
-      border: 1px solid var(--border);
+      border: 2px solid rgba(255,122,24,.3);
       border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 1.5rem;
+      padding: 1.8rem;
       transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
+      box-shadow: 0 4px 15px rgba(255,122,24,.1);
+    }
+    
+    .client-item::after {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(45deg, transparent, rgba(255,122,24,.2), transparent);
+      border-radius: 14px;
+      z-index: -1;
+      opacity: 0;
+      animation: borderGlow 3s ease-in-out infinite;
+    }
+    
+    @keyframes borderGlow {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 1; }
     }
     
 
@@ -728,11 +753,11 @@
       object-fit: contain;
       transform: scale(1.2);
     }    .client-item .client-text {
-      font-size: 0.95rem;
+      font-size: 1rem;
       font-weight: 600;
       color: var(--text);
       text-align: center;
-      line-height: 1.3;
+      line-height: 1.4;
     }
     
     @keyframes scroll-left {
@@ -743,10 +768,10 @@
     /* Responsive adjustments for carousel */
     @media (max-width: 768px) {
       .client-item {
-        width: 180px;
-        height: 85px;
-        margin: 0 0.8rem;
-        padding: 1rem;
+        width: 200px;
+        height: 100px;
+        margin: 0 1rem;
+        padding: 1.4rem;
       }
       
       .clients-track {
@@ -754,15 +779,27 @@
       }
       
       .client-item .client-text {
-        font-size: 0.8rem;
+        font-size: 0.9rem;
+      }
+      
+      #clientes {
+        padding: 4rem 0;
       }
     }
     
     @media (max-width: 480px) {
       .client-item {
-        width: 150px;
-        height: 75px;
-        padding: 0.8rem;
+        width: 170px;
+        height: 85px;
+        padding: 1.2rem;
+      }
+      
+      .client-item .client-text {
+        font-size: 0.8rem;
+      }
+      
+      #clientes {
+        padding: 3rem 0;
       }
       
       .clients-track {
@@ -770,10 +807,30 @@
       }
     }
     
-    /* Simple hover effect for tech partners - logos only */
+    /* Partners carousel animation */
+    .partners-carousel {
+      overflow: hidden;
+      position: relative;
+      margin-top: 3rem;
+      padding: 1rem 0;
+    }
+    
+    .partners-track {
+      display: flex;
+      animation: scroll-partners 25s linear infinite;
+      will-change: transform;
+    }
+    
+    @keyframes scroll-partners {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    
     .partner-card {
+      flex-shrink: 0;
+      width: 180px;
       height: 120px;
-      margin: 0.5rem;
+      margin: 0 1rem;
       border-radius: 12px;
       display: flex;
       align-items: center;
@@ -782,14 +839,8 @@
       background: linear-gradient(135deg, #1a1a1f 0%, #2a2a2f 100%);
       border: 1px solid rgba(255,122,24,.2);
       transition: all 0.3s ease;
-      cursor: pointer;
-    }
-    
-    .partner-card:hover {
-      background: linear-gradient(135deg, var(--brand) 0%, var(--brand-2) 100%);
-      border: 1px solid var(--brand);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(255,122,24,0.2);
+      position: relative;
+      overflow: hidden;
     }
     
     .partner-card img {
@@ -797,12 +848,33 @@
       max-height: 85%;
       object-fit: contain;
       opacity: 0.8;
-      transition: all 0.3s ease;
+      transition: opacity 0.3s ease;
     }
     
-    .partner-card:hover img {
-      opacity: 1;
-      transform: scale(1.05);
+    /* Responsive adjustments for partners carousel */
+    @media (max-width: 768px) {
+      .partner-card {
+        width: 150px;
+        height: 100px;
+        margin: 0 0.8rem;
+        padding: 1.2rem;
+      }
+      
+      .partners-track {
+        animation-duration: 30s;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .partner-card {
+        width: 130px;
+        height: 90px;
+        padding: 1rem;
+      }
+      
+      .partners-track {
+        animation-duration: 35s;
+      }
     }
 
     /* Estilos adicionales para el formulario */
@@ -1072,7 +1144,9 @@
             </div>
             <p>Trabajamos con las mejores herramientas y mantenemos alianzas estratégicas para garantizar la calidad e innovación en cada proyecto.</p>
         </div>
-        <div class="logos" aria-label="Logos de socios tecnológicos">
+        <div class="partners-carousel">
+          <div class="partners-track">
+            <!-- First set -->
             <div class="partner-card">
               <img src="images/Adobe_Acrobat_DC_logo_2020.svg.png" alt="Adobe Pro Logo" />
             </div>
@@ -1097,6 +1171,33 @@
             <div class="partner-card">
               <img src="images/googlemarketing platform.png" alt="Google Marketing Platform Logo" />
             </div>
+            
+            <!-- Duplicate set for infinite loop -->
+            <div class="partner-card">
+              <img src="images/Adobe_Acrobat_DC_logo_2020.svg.png" alt="Adobe Pro Logo" />
+            </div>
+            <div class="partner-card">
+              <img src="images/capcut.webp" alt="Capcut Pro Logo" />
+            </div>
+            <div class="partner-card">
+              <img src="images/filmora.avif" alt="Filmora Pro Logo" />
+            </div>
+            <div class="partner-card">
+              <img src="images/Google-AdWords-Logo.png" alt="Google Ads Logo" />
+            </div>
+            <div class="partner-card">
+              <img src="images/Logo_Google_Analytics.svg.png" alt="Google Analytics Logo" />
+            </div>
+            <div class="partner-card">
+              <img src="images/HubSpot_Logo.svg.png" alt="HubSpot Logo" />
+            </div>
+            <div class="partner-card">
+              <img src="images/what-is-gtm.webp" alt="Google Tag Manager Logo" />
+            </div>
+            <div class="partner-card">
+              <img src="images/googlemarketing platform.png" alt="Google Marketing Platform Logo" />
+            </div>
+          </div>
         </div>
     </div>
   </section>
@@ -1151,9 +1252,6 @@
           </div>
           <div class="client-item">
             <img src="images/muniflorida.png" alt="Municipalidad de Florida">
-          </div>
-          <div class="client-item">
-            <div class="client-text">Cabañas La Piedra del Ángulo</div>
           </div>
           <div class="client-item">
             <img src="images/neumaticosservitrans.jpeg" alt="Neumáticos y Repuestos">
