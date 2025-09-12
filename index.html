@@ -702,6 +702,9 @@
       display: flex;
       animation: scroll-left 25s linear infinite;
       width: max-content;
+      will-change: transform;
+      transform: translateZ(0);
+      backface-visibility: hidden;
     }
     
 
@@ -752,6 +755,9 @@
       max-height: 140%;
       object-fit: contain;
       transform: scale(1.2);
+      will-change: transform;
+      backface-visibility: hidden;
+      image-rendering: optimizeSpeed;
     }    .client-item .client-text {
       font-size: 1rem;
       font-weight: 600;
@@ -819,6 +825,9 @@
       display: flex;
       animation: scroll-partners 5s linear infinite;
       will-change: transform;
+      transform: translateZ(0);
+      backface-visibility: hidden;
+      width: max-content;
     }
     
     @keyframes scroll-partners {
@@ -849,10 +858,24 @@
       object-fit: contain;
       opacity: 0.8;
       transition: opacity 0.3s ease;
+      will-change: transform;
+      backface-visibility: hidden;
+      image-rendering: optimizeSpeed;
     }
     
     /* Responsive adjustments for partners carousel */
     @media (max-width: 768px) {
+      /* Optimización para móviles */
+      .clients-carousel,
+      .partners-carousel {
+        transform: translateZ(0);
+        -webkit-transform: translateZ(0);
+        -webkit-perspective: 1000;
+        perspective: 1000;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+      }
+      
       .partner-card {
         width: 150px;
         height: 100px;
@@ -1266,9 +1289,6 @@
             <img src="images/alvaroconsultacontables.png" alt="Álvaro Consulta Contables">
           </div>
           <div class="client-item">
-            <img src="images/PANADERIA.png" alt="Panadería">
-          </div>
-          <div class="client-item">
             <img src="images/solarpunk.png" alt="SolarPunk">
           </div>
           
@@ -1316,7 +1336,7 @@
       </div>
 
       <div class="grid-contact">
-        <form action="https://formspree.io/f/xdkoanvb" method="POST" id="contactForm">
+        <form action="https://formspree.io/f/xdkljdpj" method="POST" id="contactForm">
           <input type="hidden" name="_to" value="contacto@marktix.cl">
           <input type="hidden" name="_subject" value="Nuevo contacto desde MARKTIX">
           <input type="hidden" name="_next" value="https://marktix.cl#gracias">
