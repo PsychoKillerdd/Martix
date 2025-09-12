@@ -1,0 +1,4 @@
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/marktixc/public_html/
+    - /bin/rsync -av * $DEPLOYPATH --exclude .git --exclude .cpanel.yml
